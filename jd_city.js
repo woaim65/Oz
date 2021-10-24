@@ -22,7 +22,7 @@ const $ = new Env('城城领现金');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
-//自动抽奖 ，环境变量  JD_CITY_EXCHANGE
+//自动抽奖 ，环境变量  jdJxdExchange
 let exchangeFlag = $.getdata('jdJxdExchange') || "false";//是否开启自动抽奖，建议活动快结束开启，默认关闭
 exchangeFlag = $.isNode() ? (process.env.jdJxdExchange ? process.env.jdJxdExchange : `${exchangeFlag}`) : ($.getdata('jdJxdExchange') ? $.getdata('jdJxdExchange') : `${exchangeFlag}`);
 
@@ -39,9 +39,9 @@ if ($.isNode()) {
 }
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
 let inviteCodes = [
-  'XYLgzOSjSAugfc_WW9R_mnFfT_DM6coiMsD0gKcYPQ',
-  'RtGKzemkE1-iKtDMFdYxgqyoiMGjQQMJXutXDQAH0sLokvoZsg',
-  'RtGKzL7wFAmletKTFNxggB2J22pKi7M4vtRPSfGKdNs7CJNEuA'
+  'RtGKzrn3RV6lL4vIFdRh1BIFrxMIQp-Zw0z1yyM7yytcQiW0RQ',
+  'RtGKzL-gF1-hKoSTRYcwgBEy4Xq1F9lQSDjxBNkAt7gdbvTuZg',
+  'RtGKz-mgFFikeoeTENU33qJAmT_O363jpQN-PW51n0ZB-uejKw'
 ]
 $.shareCodesArr = [];
 
@@ -54,7 +54,7 @@ $.shareCodesArr = [];
   if (exchangeFlag+"" == "true") {
     console.log(`脚本自动抽奖`)
   } else {
-    console.log(`脚本不会自动抽奖，建议活动快结束开启，默认关闭(在10.29日自动开启抽奖),如需自动抽奖请设置环境变量  JD_CITY_EXCHANGE 为true`);
+    console.log(`脚本不会自动抽奖，建议活动快结束开启，默认关闭(在10.29日自动开启抽奖),如需自动抽奖请设置环境变量  jdJxdExchange 为true`);
   }
   $.inviteIdCodesArr = {}
   for (let i = 0; i < cookiesArr.length && true; i++) {
