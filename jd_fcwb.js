@@ -13,19 +13,19 @@ export fcwbroud=1  ##挖宝场次 1初级2中级3高级
 ============Quantumultx===============
 [task_local]
 #京喜牧场
-20 0,16 * * * https://raw.githubusercontent.com/KingRan/JDJB/main/jd_fcwb.js, tag=京喜牧场, img-url=https://github.com/58xinian/icon/raw/master/jdgc.png, enabled=true
+20 1,9,16 * * * https://raw.githubusercontent.com/KingRan/JDJB/main/jd_fcwb.js, tag=京喜牧场, img-url=https://github.com/58xinian/icon/raw/master/jdgc.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "20 0,16 * * *" script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_fcwb.js,tag=京喜牧场
+cron "20 1,9,16 * * *" script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_fcwb.js,tag=京喜牧场
 
 ===============Surge=================
-京喜牧场 = type=cron,cronexp="20 0,16 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_fcwb.js
+京喜牧场 = type=cron,cronexp="20 1,9,16 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_fcwb.js
 
 ============小火箭=========
-京喜牧场 = type=cron,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_fcwb.js, cronexpr="20 0,16 * * *", timeout=3600, enable=true
+京喜牧场 = type=cron,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_fcwb.js, cronexpr="20 1,9,16 * * *", timeout=3600, enable=true
  */
-const $ = new Env('极速版-发财挖宝助力');
+const $ = new Env('极速版-发财挖宝');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
