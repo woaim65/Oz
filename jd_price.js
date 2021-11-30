@@ -1,24 +1,3 @@
-/*
-京东保价-需要“jsdom”依赖
-
-已支持IOS双京东账号,Node.js支持N个京东账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
-============Quantumultx===============
-[task_local]
-#京东保价
-39 0,18 * * * https://raw.githubusercontent.com/KingRan/JDJB/main/jd_price.js, tag=京东保价, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
-
-================Loon==============
-[Script]
-cron "39 0,18 * * *" script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_price.js,tag=京东保价
-
-===============Surge=================
-京东保价 = type=cron,cronexp="39 0,18 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_price.js
-
-============小火箭=========
-京东保价 = type=cron,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_price.js, cronexpr="39 0,18 * * *", timeout=3600, enable=true
- */
- 
 let common = require("./function/common");
 let jsdom = require("jsdom");
 let $ = new common.env('京东保价');
