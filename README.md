@@ -7,11 +7,11 @@
 
 国内鸡 
 
-ql repo https://ghproxy.com/github.com/KingRan/JD-Scripts.git "jd_|jx_|getJDCookie" "activity|backUp" "^jd[^_]|USER|utils|function" 
+ql repo https://ghproxy.com/github.com/KingRan/JD-Scripts.git "jd_|jx_|jdCookie" "activity|backUp" "^jd[^_]|USER|utils|function|sign|sendNotify|ql"
 
 国外鸡 
 
-ql repo https://github.com/KingRan/JD-Scripts.git "jd_|jx_|getJDCookie" "activity|backUp" "^jd[^_]|USER|utils|function" 
+ql repo https://github.com/KingRan/JD-Scripts.git "jd_|jx_|jdCookie" "activity|backUp" "^jd[^_]|USER|utils|function|sign|sendNotify|ql"
 
 1、搬运整理，感谢所有原作者。
 
