@@ -18,6 +18,8 @@ cron "10 1,7,20 * * *" script-path=jd_syj.js, tag=赚京豆
 赚京豆 = type=cron,script-path=jd_syj.js, cronexpr="10 1,7,20 * * *", timeout=3600, enable=true
  */
 const $ = new Env('赚京豆');
+let sc = require("./utils/share_code.js")
+
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
@@ -636,7 +638,10 @@ function helpFriendTuan(body) {
                             } else if (data.resultCode === '9000000') {
                                 console.log('助力结果：活动火爆，跳出\n');
                                 $.canHelp = false
-                            } else console.log(`助力结果：未知错误\n${JSON.stringify(data)}\n\n`)
+                            } else {
+                                console.log(`助力结果：未知错误\n${JSON.stringify(data)}\n\n`)
+                                $.canHelp = false
+                            }
                         }
                     }
                 }
