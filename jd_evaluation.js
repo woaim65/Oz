@@ -105,7 +105,7 @@ let goodsList = []
             await getOrderList(3,1,10)
             if(goodsList && goodsList.length){
                 for(let item of goodsList){
-                    await $.wait(1000)
+                    await $.wait(5000)
                     let cName = item["cname"];
                     if (cName ==="评价晒单"){
                         console.log(`******开始评价******`);
@@ -175,7 +175,7 @@ function getOrderList(orderType,startPage,pageSize){
                             }
                             if (data.totalDeal <= pageSize + 1 && startPage < 10) {
                                 console.log('查询下一页 startPage ！', startPage + 1);
-                                await $.wait(1000)
+                                await $.wait(2000)
                                 await getOrderList(orderType, startPage + 1, pageSize)
                             }
                         } else {
@@ -459,7 +459,6 @@ function  generation(pname,usePname,type){
         getRandomArrayElements(data[type]["中间"],1)[0].replace('$',name)+
         getRandomArrayElements(data[type]["结束"],1)[0].replace('$',name)+
         new Date().getTime();
-    console.log(context)
     return context
 }
 function taskUrl(orderType,startPage,pageSize) {
@@ -542,6 +541,7 @@ function safeGet(data) {
         }
     } catch (e) {
         console.log(e);
+        console.log("data",data);
         console.log(`京东服务器访问数据为空，请检查自身设备网络情况`);
         return false;
     }
