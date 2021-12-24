@@ -27,7 +27,7 @@ let cookiesArr = [];
 const activityList = [
    //{'activityId':'6a5cfe9c54944295a489ea06b649a4ed','endTime':1636732800000},
       {'activityId':'d81180ef0c8e4efca2621ee6786f2814','endTime':9999999999999},
-   // {'activityId':'1d43119d79ba4fc3a254c449c6aea1d2','endTime':1636732799000},
+      {'activityId':'39bd798a0ab34bbc83a93fb2c6075345','endTime':1636732799000},
     //{'activityId':'40c2d87a71ec40cf96badb810818bb92','endTime':1636732799000},
    // {'activityId':'c884f4e473884217ad8fabcc160ecda0','endTime':1636819200000},
     // {'activityId':'85201aaf1895431e874132d9c2669afe','endTime':1632067200000},
