@@ -175,12 +175,13 @@ async function run() {
     if($.drawCardNum){
       let count = $.drawCardNum
       for(m=1;count--;m++){
+        if($.compositeCardNum > 0) break
         console.log(`第${m}次集卡`)
         await takePostRequest('集卡');
         await takePostRequest('getCardInfo');
         if($.runFalag == false || $.compositeCardNum > 0) break
         if(Number(count) <= 0) break
-        if(m >= 15){
+        if(m >= 5){
           console.log("集卡太多次，多余的次数请再执行脚本")
           break
         }
@@ -216,7 +217,7 @@ async function run() {
         await takePostRequest('抽奖');
         if($.runFalag == false) break
         if(Number(count) <= 0) break
-        if(m >= 10){
+        if(m >= 1){
           console.log("抽奖太多次，多余的次数请再执行脚本")
           break
         }
