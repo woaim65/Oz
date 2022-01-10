@@ -1,26 +1,18 @@
+if (!["true"].includes(process.env.JD_ZNS)) {
+    console.log("可能黑号,运行前最少手动进去过一次，避免自动运行请设置环境变量JD_ZNS为\"true\"来运行本脚本")
+    return
+}
+
 /*
-炸年兽
-by: https://github.com/shufflewzc/faker2/blob/main/jd_zhanianshou.js
-脚本兼容: QuantumultX, Surge,Loon, JSBox, Node.js
+
+脚本有问题，凑活用
 =================================Quantumultx=========================
 [task_local]
 #炸年兽
-0 0-23/5 * * * https://raw.githubusercontent.com/jiulan/platypus/main/scripts/jd_zhanianshou.js, tag=炸年兽, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
+0 0-23/5 * * * jd_zhanianshou.js, tag=炸年兽, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
 
-=================================Loon===================================
-[Script]
-cron "0 0-23/5 * * *" script-path=https://raw.githubusercontent.com/jiulan/platypus/main/scripts/jd_zhanianshou.js,tag=炸年兽
 
-===================================Surge================================
-炸年兽 = type=cron,cronexp="0 0-23/5 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/jiulan/platypus/main/scripts/jd_zhanianshou.js
-
-====================================小火箭=============================
-炸年兽 = type=cron,script-path=https://raw.githubusercontent.com/jiulan/platypus/main/scripts/jd_zhanianshou.js, cronexpr="0 0-23/5 * * *", timeout=3600, enable=true
  */
-if (process.env.ZNS != 'true') {
-    console.log('脚本默认不运行,请设置环境变量ZNS为true运行,可能黑号,运行前最少手动进去过一次')
-    return
-}
 const $ = new Env('炸年兽');
 
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
@@ -199,7 +191,7 @@ $.shareCodesArr = [];
         }
     }
 })()
-    .catch((e) => {
+.catch((e) => {
         $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
     })
     .finally(() => {
@@ -233,8 +225,8 @@ function get_secretp() {
                             if (data.data && data.data.bizCode === 0) {
                                 secretp = data.data.result.homeMainInfo.secretp
                                 console.log(secretp)
-                            }
-                        } else
+                          }
+                        } else 
                         if (data.code != 0) {
                             //console.log(`\n\nsecretp失败:${JSON.stringify(data)}\n`)
                         }
@@ -380,7 +372,6 @@ function tigernian_getTaskDetail() {
         })
     })
 }
-
 
 function tigernian_collectScore(taskToken, taskId) {
     let body = { "taskId": taskId, "taskToken": taskToken, "actionType": 1, "ss": { "extraData": { "log": "", "sceneid": "ZNShPageh5" }, "secretp": secretp, "random": randomString(6) } };
