@@ -1,18 +1,26 @@
-if (!["true"].includes(process.env.JD_ZNS)) {
-    console.log("避免自动运行请设置环境变量JD_ZNS为\"true\"来运行本脚本")
-    return
-}
-
 /*
-
-脚本有问题，凑活用
+炸年兽
+by: https://github.com/shufflewzc/faker2/blob/main/jd_zhanianshou.js
+脚本兼容: QuantumultX, Surge,Loon, JSBox, Node.js
 =================================Quantumultx=========================
 [task_local]
 #炸年兽
-0 0-23/5 * * * jd_zhanianshou.js, tag=炸年兽, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
+0 0-23/5 * * * https://raw.githubusercontent.com/jiulan/platypus/main/scripts/jd_zhanianshou.js, tag=炸年兽, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
 
+=================================Loon===================================
+[Script]
+cron "0 0-23/5 * * *" script-path=https://raw.githubusercontent.com/jiulan/platypus/main/scripts/jd_zhanianshou.js,tag=炸年兽
 
+===================================Surge================================
+炸年兽 = type=cron,cronexp="0 0-23/5 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/jiulan/platypus/main/scripts/jd_zhanianshou.js
+
+====================================小火箭=============================
+炸年兽 = type=cron,script-path=https://raw.githubusercontent.com/jiulan/platypus/main/scripts/jd_zhanianshou.js, cronexpr="0 0-23/5 * * *", timeout=3600, enable=true
  */
+if (process.env.ZNS != 'true') {
+    console.log('脚本默认不运行,请设置环境变量ZNS为true运行,可能黑号,运行前最少手动进去过一次')
+    return
+}
 const $ = new Env('炸年兽');
 
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
@@ -53,6 +61,7 @@ $.shareCodesArr = [];
             await getUA()
         }
     }
+    $.newShareCodes = []
     for (let i = 0; i < cookiesArr.length; i++) {
         if (cookiesArr[i]) {
             cookie = cookiesArr[i];
@@ -63,24 +72,23 @@ $.shareCodesArr = [];
             message = '';
             console.log(`\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
             //   await shareCodesFormat()
-            $.newShareCodes = []
-            for (let i = 0; i < $.newShareCodes.length && true; ++i) {
-                console.log(`\n开始助力 【${$.newShareCodes[i]}】`)
-                let res = await getInfo($.newShareCodes[i])
-                if (res && res['data'] && res['data']['bizCode'] === 0) {
-                    if (res['data']['result']['toasts'] && res['data']['result']['toasts'][0] && res['data']['result']['toasts'][0]['status'] === '3') {
-                        console.log(`助力次数已耗尽，跳出`)
-                        break
-                    }
-                    if (res['data']['result']['toasts'] && res['data']['result']['toasts'][0]) {
-                        console.log(`助力 【${$.newShareCodes[i]}】:${res.data.result.toasts[0].msg}`)
-                    }
-                }
-                if ((res && res['status'] && res['status'] === '3') || (res && res.data && res.data.bizCode === -11)) {
-                    // 助力次数耗尽 || 黑号
-                    break
-                }
-            }
+            // for (let i = 0; i < $.newShareCodes.length && true; ++i) {
+            //     console.log(`\n开始助力 【${$.newShareCodes[i]}】`)
+            //     let res = $.newShareCodes[i]
+            //     if (res && res['data'] && res['data']['bizCode'] === 0) {
+            //         if (res['data']['result']['toasts'] && res['data']['result']['toasts'][0] && res['data']['result']['toasts'][0]['status'] === '3') {
+            //             console.log(`助力次数已耗尽，跳出`)
+            //             break
+            //         }
+            //         if (res['data']['result']['toasts'] && res['data']['result']['toasts'][0]) {
+            //             console.log(`助力 【${$.newShareCodes[i]}】:${res.data.result.toasts[0].msg}`)
+            //         }
+            //     }
+            //     if ((res && res['status'] && res['status'] === '3') || (res && res.data && res.data.bizCode === -11)) {
+            //         // 助力次数耗尽 || 黑号
+            //         break
+            //     }
+            // }
             try {
                 await get_secretp()
 
@@ -157,6 +165,9 @@ $.shareCodesArr = [];
                                 }
                                 break
                             case 21:
+                                if (process.env.FS_LEVEL != 'card') {
+                                    console.log('默认不开卡，设置FS_LEVEL为card开卡')
+                                }else{
                                     for (var o = 0; o < task.brandMemberVos.length; o++) {
                                         if (task.brandMemberVos[o].status == 1) {
                                             console.log(`\n\n ${task.brandMemberVos[o].title}`)
@@ -167,6 +178,7 @@ $.shareCodesArr = [];
                                         }
 
                                     }
+                                }
                         }
 
                     }
@@ -187,7 +199,7 @@ $.shareCodesArr = [];
         }
     }
 })()
-.catch((e) => {
+    .catch((e) => {
         $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
     })
     .finally(() => {
@@ -198,8 +210,8 @@ function transform(str) {
     var REQUEST = new Object,
         data = str.slice(str.indexOf("?") + 1, str.length - 1),
         aParams = data.substr(1).split("&");
-    for (i = 0; i < aParams.length; i++) {　　
-        var aParam = aParams[i].split("=");　　
+    for (i = 0; i < aParams.length; i++) {
+        var aParam = aParams[i].split("=");
         REQUEST[aParam[0]] = aParam[1]
     }
     return REQUEST
@@ -221,8 +233,8 @@ function get_secretp() {
                             if (data.data && data.data.bizCode === 0) {
                                 secretp = data.data.result.homeMainInfo.secretp
                                 console.log(secretp)
-                          }
-                        } else 
+                            }
+                        } else
                         if (data.code != 0) {
                             //console.log(`\n\nsecretp失败:${JSON.stringify(data)}\n`)
                         }
@@ -368,6 +380,7 @@ function tigernian_getTaskDetail() {
         })
     })
 }
+
 
 function tigernian_collectScore(taskToken, taskId) {
     let body = { "taskId": taskId, "taskToken": taskToken, "actionType": 1, "ss": { "extraData": { "log": "", "sceneid": "ZNShPageh5" }, "secretp": secretp, "random": randomString(6) } };
