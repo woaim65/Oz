@@ -1,8 +1,7 @@
 # Oz  
-个人自用库，收藏好的JD脚本，适用于青龙面板
+个人自用库，不定期维护
 
-
-修改青龙 config.sh 文件中的GithubProxyUrl参数为：
+（代理）config.sh 文件中的GithubProxyUrl参数为：
 https://pd.zwc365.com/ 或 
 https://pd.zwc365.com/cfworker/
 
