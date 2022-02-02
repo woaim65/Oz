@@ -1,6 +1,6 @@
 # Oz  
 
-ql repo https://github.com/woaim65/Oz.git "jd_|jx_|jdCookie" "activity|backUp" "^jd[^_]|USER|utils|function|sign|sendNotify|ql"
+ql repo https://github.com/woaim65/Oz.git "jd_|jx_|jdCookie" "h|s" "^jd[^_]|USER|utils|function|sign|sendNotify|ql"
 
 备注显示变量如下
 
