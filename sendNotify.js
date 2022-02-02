@@ -1,7 +1,7 @@
 /*
- * @Author: lxk0301 https://gitee.com/lxk0301
+ * @Author: https://github.com/woaim65/Oz
  * @Date: 2020-08-19 16:12:40
- * @Last Modified by: whyour
+ * @Last Modified by: L
  * @Last Modified time: 2021-5-1 15:00:54
  * sendNotify 推送通知功能
  * @param text 通知头
@@ -192,13 +192,13 @@ if (process.env.PUSH_PLUS_USER) {
  * @param text 通知头
  * @param desp 通知体
  * @param params 某些推送通知方式点击弹窗可跳转, 例：{ url: 'https://abc.com' }
- * @param author 作者仓库等信息  例：`本通知 By：https://github.com/whyour/qinglong`
+ * @param author 作者仓库等信息  例：`本通知 By：https://github.com/woaim65/Oz`
  * @returns {Promise<unknown>}
  */
 async function sendNotify(
   text,
   desp,
-  params = {'TG交流群':'https://t.me/jd_zero_205'},
+  params = {'跑路群':'https://t.me/jd_zero_205'},
   author = '\n\n云函数老用户这个月开始实行新收费政策,请自行去自己私库页面或查看群内置顶.不需要请及时删除函数和github私库.',
 ) {
   let no_notify = process.env.no_notify
